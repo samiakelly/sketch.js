@@ -109,11 +109,23 @@ function mostraRaquete(x, y){
 function movimentarMinhaRaquete (){
   
   if (keyIsDown(UP_ARROW)){
+    if(podeSeMoverParaCima()){
     yRaquete -= 10;
+      }
   }
   if (keyIsDown(DOWN_ARROW)){
+    if(podeSeMoverParaBaixo()){
     yRaquete += 10;
+      }
   }
+}
+
+function podeSeMoverParaBaixo(){
+  return yRaquete < 320;
+}
+
+function podeSeMoverParaCima(){
+  return yRaquete > 5;
 }
 
 function colisaoBolinhaRaquete (x,y){
@@ -134,11 +146,23 @@ function movimenteRaqueteOponente(){
 function opcaoMutiPlay(){
    
   if (keyIsDown(87)){
+    if(podeSeMoverParaCimaOponente()){
     yRaqueteOponente -= 10;
+      }
   }
   if (keyIsDown(83)){
+    if(podeSeMoverParaBaixoOponente()){
     yRaqueteOponente += 10;
+       }
   }
+}
+
+function podeSeMoverParaBaixoOponente(){
+  return yRaqueteOponente < 320;
+}
+
+function podeSeMoverParaCimaOponente(){
+  return yRaqueteOponente > 5;
 }
 
 function bolinhaNaoFicaPresa(){
@@ -167,11 +191,11 @@ function incluirPontos(){
 
 function marcaPontos(){
   if (xBolinha > 590){
-    meusPontos ++;
+    meusPontos +=1;
     ponto.play()
   }
   if (xBolinha < 10){
-    pontosOponente ++;
+    pontosOponente +=1;
     ponto.play()
   }
 }
