@@ -20,9 +20,9 @@ let velocidadeyRaquete = 0;
 // variavesi valor do react rede centro 
 
 let xRede = 290;
-let yRede = 0;
+let yRede = 1;
 let wRede = 6;
-let hRede = 590;
+let hRede = 397;
 
 // variaveis raquete oponente
 
