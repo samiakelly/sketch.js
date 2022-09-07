@@ -41,6 +41,13 @@ let trilha;
 let ponto;
 let raquetada;
 
+// variaveis mensagens
+let venceuJogador1 = 'Jogador 1 Venceu!';
+let venceuJogador2 = 'Jogador 2 Venceu!';
+
+let textoMeusPontos = 'Jogador 1';
+let textoPontosOponente = 'Jogador 2';
+
 let colidiu = false;
 
 function preload(){
@@ -55,7 +62,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(70,130,180);
   mostrarBolinha()
   movimentaBolinha()
   verificaColisao()
@@ -64,12 +71,13 @@ function draw() {
   movimentarMinhaRaquete ()
   colisaoBolinhaRaquete (xRaquete, yRaquete)
   mostraRaquete(xRaqueteOponente, yRaqueteOponente )
-  movimenteRaqueteOponente()
+  //movimenteRaqueteOponente()
   colisaoBolinhaRaquete (xRaqueteOponente, yRaqueteOponente)
   incluirPontos()
   marcaPontos()
-  //opcaoMutiPlay()
+  opcaoMutiPlay()
   bolinhaNaoFicaPresa()
+  fimDeJogo()
   
 }
 
@@ -184,9 +192,11 @@ function incluirPontos(){
   fill(255)
   text(meusPontos, 170, 32)
   fill(color(255,140,0))
-  rect(447, 10, 50, 28);
+  rect(500, 10, 50, 28);
   fill(255)
-  text(pontosOponente, 470, 32)
+  text(pontosOponente, 524, 32)
+  text(textoMeusPontos, 75, 30);
+  text(textoPontosOponente, 420, 30);
   }
 
 function marcaPontos(){
@@ -197,5 +207,30 @@ function marcaPontos(){
   if (xBolinha < 10){
     pontosOponente +=1;
     ponto.play()
+  }
+}
+
+function fimDeJogo(){
+  if (meusPontos ==10){
+    trilha.stop();
+    noStroke();
+    textSize(20);
+    textAlign(CENTER);
+    fill(color(18,10,143));
+    rect(195, 150, 210, 100, 10);
+    fill(255);
+    text(venceuJogador1, 300, 210);
+    noLoop();
+  }
+  if (pontosOponente ==10){
+    trilha.stop();
+    noStroke();
+    textSize(20);
+    textAlign(CENTER);
+    fill(color('#D30000'));
+    rect(195, 150, 210, 100, 10);
+    fill(255);
+    text(venceuJogador2, 300, 210);
+    noLoop();
   }
 }
